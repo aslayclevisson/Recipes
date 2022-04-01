@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-{% include 'recipes/partials/__head.html' %}
+{% include 'recipes/partials/head.html' %}
 
 <body>
-    {% include 'recipes/partials/__header.html' %}
+    {% include 'recipes/partials/header.html' %}
 
-    <div class="search-container">
-        <div class="container">
-            <form class="search-form" action="" method="POST">
-                {% csrf_token %}
-                <input type="search" class="search-bar" name="search-bar">
-                <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
-            </form>
+    {%  include 'recipes/partials/search_bar.html' %}
+
+    <main class="main-content-container">
+        <div class="main-content main-content-grid container">
+            {% include 'recipes/partials/cards.html' %}
+            {% include 'recipes/partials/cards.html' %}
+            {% include 'recipes/partials/cards.html' %}
+            {% include 'recipes/partials/cards.html' %}
+            {% include 'recipes/partials/cards.html' %}
         </div>
-    </div>
+    </main>
 </body>
 
 </html>
