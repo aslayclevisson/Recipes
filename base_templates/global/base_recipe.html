@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+{% include 'recipes/partials/head.html' %}
+
+<body>
+    {% include 'recipes/partials/header.html' %}
+    {% include 'recipes/partials/search_bar.html' %}
+
+    <main class="main-content-container">
+        {% block 'recipe' %}{% endblock %}
+    </main>
+
+    {% include 'recipes/partials/footer.html' %}
+</body>
+
+</html>
