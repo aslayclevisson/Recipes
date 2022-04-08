@@ -6,6 +6,8 @@
 <div class="main-content main-content-grid container">
     {% for recipe in recipes %}
         {% include 'recipes/partials/cards.html' %}
+    {% empty %}
+        <h1>No recipes found. T^T</h1>
     {% endfor %}
 </div>
 {% endblock 'recipe' %}
