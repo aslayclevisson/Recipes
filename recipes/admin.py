@@ -4,11 +4,15 @@ from .models import Category, Recipe
 
 # Register your models here.
 
+
 class CategoryAdmin(admin.ModelAdmin):
     ...
+
+
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-     ...
+    ...
 
-# or    
+
+# or
 admin.site.register(Category, CategoryAdmin)
