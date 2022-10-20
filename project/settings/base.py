@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-fs+7z+foo#&kjl@)%+!7!mvl60!4qa7vf60r%&aew*d4q94_n$'  # noqa E501
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS: list[str] = []
+DEBUG = False
+
+ALLOWED_HOSTS = ['localhost:8000']
 
 
 # Application definition
@@ -119,8 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'base_static', ]
-
+STATICFILES_DIRS = [BASE_DIR / 'base_static']
 # noqa creates a folder with all static files in the project (manage.py collectstatic)
 STATIC_ROOT = BASE_DIR / 'static'
 
