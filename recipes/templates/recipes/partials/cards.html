@@ -1,10 +1,12 @@
 
 <div class="main-grid-item recipe">
-    <div class="recipe-img">
-        <a href="{% url 'recipes:recipe' recipe.id %}" name="food">
-            <img src="{{ recipe.cover.url }}" alt="food-img">
-        </a>
-    </div>
+    {% if recipe.cover %}
+        <div class="recipe-img">
+            <a href="{% url 'recipes:recipe' recipe.id %}" name="food">
+                <img src="{{ recipe.cover.url }}" alt="food-img">
+            </a>
+        </div>
+    {% endif %}
     <div class="recipe-title">
         <a href="{% url 'recipes:recipe' recipe.id %}" name="food-title">
             <h2 class="recipe-title-description">
@@ -15,10 +17,14 @@
     <div class="recipe-author">
         <span class="author-items">
             <i class="fas fa-user"></i>
-            {% if recipe.author.first_name or recipe.author.last_name %}
-                <small>{{ recipe.author.first_name }} {{ recipe.author.last_name }}</small>
+            {% if recipe.author is not None %}
+                {% if recipe.author.first_name or recipe.author.last_name %}
+                    <small>{{ recipe.author.first_name }} {{ recipe.author.last_name }}</small>
+                {% else %}
+                    <small>{{ recipe.author.username }}</small>
+                {% endif %}
             {% else %}
-                <small>{{ recipe.author.username }}</small>
+                <small>Anonymous</small>
             {% endif %}
         </span>
 
@@ -61,9 +67,14 @@
     </footer>  
         
     {% elif is_detail_page is True %}
-    <div class="recipe-preparation">
-        <h3>Detalhes da preparação</h3>
-        <p>{{ recipe.preparation_steps|linebreaksbr }}</p>
-    </div>
+        <div class="recipe-preparation">
+            {% if recipe.preparation_step_is_html %}
+                <h3>Detalhes da preparação</h3>
+                <p>{{ recipe.preparation_step|safe }}</p>
+            {% else %}
+                <h3>Detalhes da preparação</h3>
+                <p>{{ recipe.preparation_step|linebreaksbr }}</p>  
+            {% endif %}          
+        </div>
     {% endif %}
 </div>

@@ -1,6 +1,6 @@
 {% extends 'global/base_recipe.html' %}
 
-{% block 'title' %}Category - {{ title }}{% endblock %}
+{% block 'title' %}{{ title }}{% endblock %}
 
 {% block 'recipe' %}
 <div class="main-content main-content-grid container">
@@ -8,7 +8,7 @@
     {% for recipe in recipes %}
         {% include 'recipes/partials/cards.html' %}
     {% empty %}
-        <h1>No recipes found. T^T</h1>
+        {% include 'recipes/partials/not_found.html' %}
     {% endfor %}
 </div>
 {% endblock 'recipe' %}
