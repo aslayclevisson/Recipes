@@ -32,5 +32,5 @@ def category(request, category_id):
 
     return render(request, 'recipes/pages/category.html',
                   context={'recipes': recipes,
-                           'title': f'{recipes[0].category.name}',
+                           'title': f'Category - {recipes[0].category.name}',
                            })
